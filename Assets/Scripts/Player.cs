@@ -7,9 +7,9 @@ using Mediapipe.Unity.Sample.HandTracking;
 public class Player : MonoBehaviour
 {
     public Sprite[] sprites;
-    public float strength = 5f;
+    public float strength = 3f;
     public float gravity = -9.81f;
-    public float tilt = 5f;
+    public float tilt = 2f;
 
     private SpriteRenderer spriteRenderer;
     private Vector3 direction;
@@ -38,18 +38,22 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-         if (handTracking != null && handTracking.LeftTouching) {
+        if (handTracking != null && handTracking.LeftTouching)
+        {
             direction = Vector3.up * strength;
         }
+        else
+        {
+            // Apply gravity even if there's no hand input
+            direction.y += gravity * Time.deltaTime;
+        }
 
-        // Apply gravity and update the position
-        direction.y += gravity * Time.deltaTime;
         transform.position += direction * Time.deltaTime;
 
         // Tilt the bird based on the direction
-        Vector3 rotation = transform.eulerAngles;
-        rotation.z = direction.y * tilt;
-        transform.eulerAngles = rotation;
+        // Vector3 rotation = transform.eulerAngles;
+        // rotation.z = direction.y * tilt;
+        // transform.eulerAngles = rotation;
     }
 
     private void AnimateSprite()
