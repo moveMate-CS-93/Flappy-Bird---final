@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Mediapipe.Unity.Sample.HandTracking;
 
-public class Player : MonoBehaviour
+public class FBPlayer : MonoBehaviour
 {
     public Sprite[] sprites;
     public float strength = 5f;
@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     private Vector3 direction;
     private int spriteIndex;
 
-    HandTrackingSolution handTracking;
+    FBHandTrackingSolution handTracking;
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         InvokeRepeating(nameof(AnimateSprite), 0.15f, 0.15f);
-        handTracking = FindObjectOfType<HandTrackingSolution>();  // Find the HandTrackingSolution component in the scene
+        handTracking = FindObjectOfType<FBHandTrackingSolution>();  // Find the HandTrackingSolution component in the scene
     }
 
     private void OnEnable()
@@ -68,9 +68,9 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Obstacle")) {
-            GameManager.Instance.GameOver();
+            FBGameManager.Instance.GameOver();
         } else if (other.gameObject.CompareTag("Scoring")) {
-            GameManager.Instance.IncreaseScore();
+            FBGameManager.Instance.IncreaseScore();
         }
     }
 

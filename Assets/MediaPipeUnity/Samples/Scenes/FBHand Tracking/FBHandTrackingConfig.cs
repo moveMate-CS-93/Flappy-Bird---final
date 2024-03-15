@@ -12,7 +12,7 @@ using Mediapipe.Unity.Sample.UI;
 
 namespace Mediapipe.Unity.Sample.HandTracking.UI
 {
-  public class HandTrackingConfig : ModalContents
+  public class FBHandTrackingConfig : ModalContents
   {
     private const string _ModelComplexityPath = "Scroll View/Viewport/Contents/Model Complexity/Dropdown";
     private const string _MaxNumHandsPath = "Scroll View/Viewport/Contents/Max Num Hands/InputField";
@@ -21,7 +21,7 @@ namespace Mediapipe.Unity.Sample.HandTracking.UI
     private const string _RunningModePath = "Scroll View/Viewport/Contents/Running Mode/Dropdown";
     private const string _TimeoutMillisecPath = "Scroll View/Viewport/Contents/Timeout Millisec/InputField";
 
-    private HandTrackingSolution _solution;
+    private FBHandTrackingSolution _solution;
     private Dropdown _modelComplexityInput;
     private InputField _maxNumHandsInput;
     private InputField _minDetectionConfidenceInput;
@@ -33,7 +33,7 @@ namespace Mediapipe.Unity.Sample.HandTracking.UI
 
     private void Start()
     {
-      _solution = GameObject.Find("Solution").GetComponent<HandTrackingSolution>();
+      _solution = GameObject.Find("Solution").GetComponent<FBHandTrackingSolution>();
       InitializeContents();
     }
 
@@ -44,7 +44,7 @@ namespace Mediapipe.Unity.Sample.HandTracking.UI
 
     public void SwitchModelComplexity()
     {
-      _solution.modelComplexity = (HandTrackingGraph.ModelComplexity)_modelComplexityInput.value;
+      _solution.modelComplexity = (FBHandTrackingGraph.ModelComplexity)_modelComplexityInput.value;
       _isChanged = true;
     }
 
@@ -105,7 +105,7 @@ namespace Mediapipe.Unity.Sample.HandTracking.UI
       _modelComplexityInput = gameObject.transform.Find(_ModelComplexityPath).gameObject.GetComponent<Dropdown>();
       _modelComplexityInput.ClearOptions();
 
-      var options = new List<string>(Enum.GetNames(typeof(HandTrackingGraph.ModelComplexity)));
+      var options = new List<string>(Enum.GetNames(typeof(FBHandTrackingGraph.ModelComplexity)));
       _modelComplexityInput.AddOptions(options);
 
       var currentModelComplexity = _solution.modelComplexity;

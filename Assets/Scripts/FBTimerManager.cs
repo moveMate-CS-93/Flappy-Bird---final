@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimerManager : MonoBehaviour
+public class FBTimerManager : MonoBehaviour
 {
-    public static TimerManager Instance { get; private set; }
+    public static FBTimerManager Instance { get; private set; }
 
     [SerializeField] private Text timerText;
     private float elapsedTime;

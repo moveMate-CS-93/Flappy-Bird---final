@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Pipes : MonoBehaviour
+public class FBPipes : MonoBehaviour
 {
     public Transform top;
     public Transform bottom;

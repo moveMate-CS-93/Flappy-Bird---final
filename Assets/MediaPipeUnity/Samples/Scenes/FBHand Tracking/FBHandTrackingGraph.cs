@@ -36,7 +36,7 @@ namespace Mediapipe.Unity.Sample.HandTracking
     }
   }
 
-  public class HandTrackingGraph : GraphRunner
+  public class FBHandTrackingGraph : GraphRunner
   {
     public enum ModelComplexity
     {

@@ -1,15 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class FBGameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
-    [SerializeField] private Player player;
+    public static FBGameManager Instance { get; private set; }
+    [SerializeField] private FBPlayer player;
     [SerializeField] private Text scoreText;
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject getReadyImage; // Reference to the "Get Ready" image
     [SerializeField] private GameObject gameOverImage; // Reference to the "Game Over" image
-    private BackgroundMusic backgroundMusic; 
+    private FBBackgroundMusic backgroundMusic; 
+
 
     private int score;
     public int Score => score;
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             Pause();
 
-            backgroundMusic = FindObjectOfType<BackgroundMusic>();
+            backgroundMusic = FindObjectOfType<FBBackgroundMusic>();
         }
     }
 
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour
             backgroundMusic.PlayMusic();
         }
 
-        Pipes[] pipes = FindObjectsOfType<Pipes>();
+        FBPipes[] pipes = FindObjectsOfType<FBPipes>();
 
         for (int i = 0; i < pipes.Length; i++)
         {
@@ -64,9 +65,9 @@ public class GameManager : MonoBehaviour
         }
 
         // Restart the timer through the singleton instance
-        if (TimerManager.Instance != null)
+        if (FBTimerManager.Instance != null)
         {
-            TimerManager.Instance.RestartTimer();
+            FBTimerManager.Instance.RestartTimer();
             Debug.Log("Play Button Pressed - Timer Restarted");
         }
     }

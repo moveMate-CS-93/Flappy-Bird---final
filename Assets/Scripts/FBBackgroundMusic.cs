@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundMusic : MonoBehaviour
+public class FBBackgroundMusic : MonoBehaviour
 {
-    private static BackgroundMusic backgroundMusic;
+    private static FBBackgroundMusic backgroundMusic;
 
     private AudioSource audioSource; // Reference to the AudioSource component
 

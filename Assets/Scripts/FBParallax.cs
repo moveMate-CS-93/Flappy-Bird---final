@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Parallax : MonoBehaviour
+public class FBParallax : MonoBehaviour
 {
     public float animationSpeed = 1f;
     private MeshRenderer meshRenderer;
